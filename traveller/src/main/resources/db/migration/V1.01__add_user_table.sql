@@ -12,3 +12,9 @@ CREATE TABLE dbo.[user] (
 	CONSTRAINT FK_user_cat_sex FOREIGN KEY (id_cat_sex)
 	REFERENCES dbo.[cat_sex](id_cat_sex)
 )
+
+CREATE NONCLUSTERED INDEX IX_user_id_user
+    ON dbo.[user] (id_user);
+
+CREATE NONCLUSTERED INDEX IX_user_user_name
+    ON dbo.[user] (user_name);
