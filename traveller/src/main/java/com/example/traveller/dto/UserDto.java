@@ -1,6 +1,6 @@
 package com.example.traveller.dto;
 
-import com.example.traveller.entity.cat.SexStatus;
+import com.example.traveller.entity.cat.Sex;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
 
-@ApiModel
+@ApiModel("User")
 public class UserDto {
 
 	private static final String VALID_EMAIL_ADDRESS_REGEX = "^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$";
@@ -39,7 +39,7 @@ public class UserDto {
 	private Date birthDate;
 
 	@ApiModelProperty(value = "Sex", required = true)
-	private SexStatus sex;
+	private Sex sex;
 
 	public String getUserName() {
 		return userName;
@@ -89,11 +89,11 @@ public class UserDto {
 		this.birthDate = birthDate;
 	}
 
-	public SexStatus getSex() {
+	public Sex getSex() {
 		return sex;
 	}
 
-	public void setSex(SexStatus sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 }

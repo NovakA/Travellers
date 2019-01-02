@@ -1,6 +1,6 @@
 package com.example.traveller.entity;
 
-import com.example.traveller.entity.cat.SexStatus;
+import com.example.traveller.entity.cat.Sex;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -11,15 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "[user]")
+public class User implements Serializable {
+
+	private static final long serialVersionUID = -1544309837890101972L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_user")
-	private Long id;
+	private Long idUser;
 
 	@NotNull
 	@Size(min = 4, max = 100)
@@ -60,15 +64,18 @@ public class User {
 	private boolean is_active;
 
 	@Column(name = "id_cat_sex")
-	@Convert(converter = SexStatus.Converter.class)
-	private SexStatus sexStatus;
+	@Convert(converter = Sex.Converter.class)
+	private Sex sex;
 
-	public Long getId() {
-		return id;
+	public User() {
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getUsername() {
@@ -135,11 +142,11 @@ public class User {
 		this.is_active = is_active;
 	}
 
-	public SexStatus getSexStatus() {
-		return sexStatus;
+	public Sex getSex() {
+		return sex;
 	}
 
-	public void setSexStatus(SexStatus sexStatus) {
-		this.sexStatus = sexStatus;
+	public void setSex(Sex sex) {
+		this.sex = sex;
 	}
 }
