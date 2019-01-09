@@ -23,8 +23,8 @@ public class UserResource {
 	private UserService userService;
 
 	@ApiOperation(value = "User registration")
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
-	public ResponseEntity<User> createUser(@RequestBody @Valid UserDto userDto) {
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public ResponseEntity<User> createUser(@Valid @RequestBody UserDto userDto) {
 		User user = userService.registerNewUserAccount(userDto);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
